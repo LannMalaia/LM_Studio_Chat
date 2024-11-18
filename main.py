@@ -1,9 +1,9 @@
 from langchain_community.vectorstores import FAISS
 from langchain_community.vectorstores.utils import DistanceStrategy
 
-from langchain_embedder import Embedder
-from langchain_rag_maker import LangchainRagMaker
-from langchain_requester import LangchainRequester
+from mylangchain.langchain_embedder import Embedder
+from mylangchain.langchain_rag_maker import LangchainRagMaker
+from mylangchain.langchain_requester import LangchainRequester
 
 embedder = Embedder("http://localhost:5000/v1")
 documents_arr = LangchainRagMaker().load()
