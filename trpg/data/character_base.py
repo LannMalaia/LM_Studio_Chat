@@ -17,4 +17,6 @@ class Character_Base(Promptable):
         self.max_fate_point: int
         self.aspects: list[str] = []
         self.stats: list[Stat]
-        pass
+    
+    def get_prompt(self):
+        return super().get_prompt()
