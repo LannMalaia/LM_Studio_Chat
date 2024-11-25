@@ -12,13 +12,22 @@ class ASPECT_TYPE(Enum):
 
 class Aspect(Promptable):
     """
-        면모\n
+        일반 면모\n
         캐릭터나 아이템이 가진 특징. 간단한 문구와, 그에 대한 설명으로 이어진다.
     """
-    def __init__(self, title: str, desc: str, aspect_type: ASPECT_TYPE):
-        self.title: str = ""
-        self.desc: str = ""
-        self.aspect_type: ASPECT_TYPE = ASPECT_TYPE.NONE
+    def __init__(self, title: str, desc: str, aspect_type: ASPECT_TYPE = ASPECT_TYPE.NONE):
+        self.title: str = title
+        self.desc: str = desc
+        self.aspect_type: ASPECT_TYPE = aspect_type
     
     def get_prompt(self):
-        super.get_prompt()
+        result = ""
+
+        if ASPECT_TYPE == ASPECT_TYPE.POSITIVE:
+            result += "(긍정적)"
+        elif ASPECT_TYPE == ASPECT_TYPE.NEGATIVE:
+            result += "(부정적)"
+        
+        result += f"{self.title}: {self.desc}"
+
+        return result
